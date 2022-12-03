@@ -3,4 +3,5 @@ go 1.19
 use (
 	./days/01
 	./days/02
+	./days/03
 )
