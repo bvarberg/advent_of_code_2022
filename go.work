@@ -4,4 +4,6 @@ use (
 	./days/01
 	./days/02
 	./days/03
+	./days/04
+	./days/readers
 )
