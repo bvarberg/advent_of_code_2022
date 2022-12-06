@@ -3,6 +3,7 @@ package part1
 import (
 	"aoc05/stack"
 	"fmt"
+	"log"
 	"readers"
 	"regexp"
 	"strconv"
@@ -14,6 +15,25 @@ func Run() {
 	moves := loadMoves("./data/simple/moves.txt")
 	fmt.Println(stacks)
 	fmt.Printf("%+v", moves)
+
+	for moveNumber, move := range moves {
+		fmt.Printf("move (%d): %+v\n", moveNumber, move)
+		for i := 0; i < move.n; i++ {
+			crate, ok := stacks[move.from-1].Pop()
+			if !ok {
+				log.Fatalf("couldn't pop from the stack on move (%d): %+v", moveNumber, move)
+			}
+			stacks[move.to-1].Push(crate)
+		}
+	}
+
+	topOfStacks := []string{}
+	for _, stack := range stacks {
+		crate, _ := stack.Top()
+		topOfStacks = append(topOfStacks, crate)
+	}
+
+	fmt.Printf("Top of each stack: %s\n", strings.Join(topOfStacks, ""))
 }
 
 func loadMoves(name string) (moves []Move) {
