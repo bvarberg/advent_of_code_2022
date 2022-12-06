@@ -1,4 +1,4 @@
-package part1
+package part2
 
 import (
 	"aoc05/stack"
@@ -15,13 +15,17 @@ func Run() {
 	moves := loadMoves("./data/input/moves.txt")
 
 	for moveNumber, move := range moves {
-		fmt.Printf("move (%d): %+v\n", moveNumber, move)
+		crates := []string{}
 		for i := 0; i < move.n; i++ {
 			crate, ok := stacks[move.from-1].Pop()
 			if !ok {
 				log.Fatalf("couldn't pop from the stack on move (%d): %+v", moveNumber, move)
 			}
-			stacks[move.to-1].Push(crate)
+			crates = append(crates, crate)
+		}
+
+		for j := move.n; j > 0; j-- {
+			stacks[move.to-1].Push(crates[j-1])
 		}
 	}
 
@@ -31,7 +35,8 @@ func Run() {
 		topOfStacks = append(topOfStacks, crate)
 	}
 
-	fmt.Printf("Top of each stack (CrateMover 9000): %s\n", strings.Join(topOfStacks, ""))
+	fmt.Println(stacks)
+	fmt.Printf("Top of each stack (CrateMover 9001): %s\n", strings.Join(topOfStacks, ""))
 }
 
 func loadMoves(name string) (moves []Move) {
