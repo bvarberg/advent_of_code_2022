@@ -29,13 +29,6 @@ type rucksack struct {
 	compartmentB string
 }
 
-// func chunkBy[T any](items []T, chunkSize int) (chunks [][]T) {
-// 	for chunkSize < len(items) {
-// 			items, chunks = items[chunkSize:], append(chunks, items[0:chunkSize:chunkSize])
-// 	}
-// 	return append(chunks, items)
-// }
-
 func readInput(name string) []rucksack {
 	file, err := os.Open(name)
 	if err != nil {
