@@ -44,3 +44,13 @@ func ReadLines(name string) (lines []string) {
 
 	return
 }
+
+// ReadBytes reads a file into a single string.
+func ReadBytes(name string) (bytes []byte) {
+	bytes, err := os.ReadFile(name)
+	if err != nil {
+		panic(err)
+	}
+
+	return bytes
+}
