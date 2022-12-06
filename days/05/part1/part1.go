@@ -11,8 +11,8 @@ import (
 )
 
 func Run() {
-	stacks := loadInitialStacks("./data/simple/initial_stacks.txt")
-	moves := loadMoves("./data/simple/moves.txt")
+	stacks := loadInitialStacks("./data/input/initial_stacks.txt")
+	moves := loadMoves("./data/input/moves.txt")
 	fmt.Println(stacks)
 	fmt.Printf("%+v", moves)
 
