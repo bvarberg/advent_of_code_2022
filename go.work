@@ -6,5 +6,6 @@ use (
 	./days/03
 	./days/04
 	./days/05
+	./days/06
 	./days/readers
 )
